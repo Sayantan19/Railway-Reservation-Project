@@ -22,7 +22,7 @@ class Login extends Component {
     e.preventDefault();
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "block";
-    const url = "/user/login/";
+    const url = "/user/login/"; 
     const payload = {
       email: this.state.email,
       password: this.state.password,

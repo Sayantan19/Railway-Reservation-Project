@@ -4,19 +4,18 @@ class About extends Component {
     return (
       <div className="about-page">
         <div style={{ gridColumn: "span 3" }}>
-          <h2>About Developer</h2>
-          <p>Name : Sanjay Majhi</p>
+          <h2>About Developers</h2>
+          <p>Name : Anirudh Ray, Sayantan Bose, Archisman Mukherjee, Aritrajit Das, Singthi Saniya</p>
           <p>
-            I am a full stack web developer and a pround Indian. This Website is
-            one of my project.
+            Full stack railway reservation website for 3rd year software engineering project made with &#10084; by small boys and boseman
           </p>
           <p>
             For github profile :{" "}
-            <a href="https://github.com/sanjaymajhi">sanjaymajhi</a>
+            <a href="https://github.com/znirudhexe">Small boys</a>
           </p>
           <p>
             For queries contact :{" "}
-            <a href="mailto:1sanjaymajhi@gmail.com">1sanjaymajhi@gmail.com</a>{" "}
+            <a href="sayantan.bose.csbs24@heritageit.edu.in">boseman</a>{" "}
           </p>
           <h2>About the project</h2>
           <p>This project is a full stack Train booking Website.</p>

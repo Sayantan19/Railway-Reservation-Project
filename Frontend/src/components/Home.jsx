@@ -14,7 +14,7 @@ class Home extends Component {
 
     this.loadStations();
     Swal.fire({
-      title: "Welcome to BookYourJourney.com",
+      title: "Welcome to IndoRailway.com",
       icon: "info",
       showCloseButton: true,
       html: `
@@ -175,13 +175,13 @@ class Home extends Component {
 
         <div id="faq">
           <h2>FAQ</h2>
-          <h3>Q) How to book train tickets via RailYatri?</h3>
+          <h3>Q) How to book train tickets via IndoRailway?</h3>
           <p>
             <strong>Ans. </strong> Now book your train tickets in a jiffy with
             these easy steps & get your PNR:
             <ul>
               <li>
-                - Visit BookYourJourney.com to select the boarding & arrival
+                - Visit IndoRailway.com to select the boarding & arrival
                 destinations.
               </li>
               <li>
@@ -217,7 +217,7 @@ class Home extends Component {
           <h3>Q - How can I cancel e-ticket and how will I get refund?</h3>
           <p>
             <strong>Ans. </strong>To cancel your e-ticket log on to
-            www.bookyourjourney.com and go to My Account -> My Transactions ->
+            www.IndoRailway.com and go to My Account - &gt; My Transactions - &gt;
             Booked Ticket History and select the ticket to be cancelled and then
             click "Cancel Ticket" Cancellation would be confirmed online and the
             refund would be credited back to the account used for booking as for
@@ -241,16 +241,16 @@ class Home extends Component {
         </div>
         <div id="contact">
           <img src="" alt="" />
-          <a href="https://github.com/sanjaymajhi">Github &emsp; &emsp;</a>
+          <a href="https://github.com/">Github &emsp; &emsp;</a>
           <img src="" alt="" />
-          <a href="https://www.linkedin.com/in/sanjay-majhi-898938188/">
+          <a href="https://www.linkedin.com/in/">
             LinkedIn
           </a>
         </div>
         <div id="footer">
-          <p>No Copyrights - www.bookyourjourney.com. No Rights Reserved</p>
-          <p>This is not official website any company.</p>
-          <p>Designed and Hosted by Sanjay Majhi</p>
+          <p>No Copyrights - www.IndoRailway.com. No Rights Reserved</p>
+          <p>This is not official website of any company.</p>
+          <p>Designed by team Small boys including boseman</p>
         </div>
         <div className="overlay">
           <div
