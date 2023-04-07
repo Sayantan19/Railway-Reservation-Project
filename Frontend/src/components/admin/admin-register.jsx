@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 
-class Profile extends Component {
+class AdProfile extends Component {
   constructor(props) {
     super(props);
 
@@ -113,7 +113,7 @@ class Profile extends Component {
     e.preventDefault();
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "block";
-    const url = "/user/register/";
+    const url = "/admin/register/";
     let data = {
       ...this.state
     };
@@ -128,7 +128,7 @@ class Profile extends Component {
       .then(data => {
         if (data.saved === "success") {
           alert("Registration Successful...\nProceed to Login.");
-          this.props.history.push("/user/login/");
+          this.props.history.push("/admin/login/");
         } else {
           overlay.style.display = "none";
           const errors = document.getElementById("errors");
@@ -302,4 +302,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default AdProfile;

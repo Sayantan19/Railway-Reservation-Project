@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/user/Login";
 import Profile from "./components/user/Profile_register";
+import AdProfile from "./components/admin/admin-register";
 import Contact from "./components/contact";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -45,6 +46,7 @@ class App extends Component {
               )}
             />
             <Route path="/user/register" component={Profile} />
+            <Route path="/admin/register" component={AdProfile} />
             <Route path="/user/logout" component={Home} />
 
             <Route path="/search" render={props => <Search {...props} />} />

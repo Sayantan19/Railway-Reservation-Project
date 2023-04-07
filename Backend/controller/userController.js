@@ -1,15 +1,9 @@
-var async = require("async");
-var mongoose = require("mongoose");
-
 var User = require("../models/user");
 
 var validator = require("express-validator");
 
 var bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
-var nodemailer = require("nodemailer");
-
-var BodyParser = require("body-parser");
 //for recaptcha
 var Request = require("request-promise");
 
