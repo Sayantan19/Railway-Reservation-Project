@@ -66,13 +66,13 @@ class Anav extends Component {
 
         <div id="nav-hide3" style={{ display: "none" }}>
           <ul>
-            <Link>
+            <Link to="/admin/train/update">
               <li>Update Train</li>
             </Link>
-            <Link>
+            <Link to="#">
               <li>Update Route</li>
             </Link>
-            <Link>
+            <Link to="#">
               <li>Update Station</li>
             </Link>
           </ul>

@@ -53,7 +53,7 @@ class Train extends Component {
 
   submit = e => {
     e.preventDefault();
-    const url = "/booking/train/create/";
+    const url = "/booking/train/update/";
     const token = localStorage.getItem("token");
     const payload = {
       ...this.state,
@@ -77,10 +77,11 @@ class Train extends Component {
         } else {
           const h2 = document.getElementById("save_error");
           h2.style.visibility = "visible";
+          h2.style.color = "red";
           if (!(data.error instanceof Array)) {
             data.error = new Array(data.error);
           }
-          data.error.map(error => (h2.innerHTML += error.msg + "\n"));
+          data.error.map(error => (h2.innerHTML ="Error: "+ error.msg + "\n"));
           setTimeout(function () {
             h2.style.visibility = "hidden";
           }, 5000);
@@ -124,9 +125,9 @@ class Train extends Component {
           </div>
           <label htmlFor="route">Select Route</label>
           <select name="route" id="route" onChange={this.handleChange}></select>
-          <label htmlFor="depart_time">departure time : </label>
+          <label htmlFor="depart_time">Departure time: <br/><span style={{fontSize:"12px", color:"grey"}}>[Please put original time if you do not want to change the Departure Time]</span> </label>
           <input type="time" name="depart_time" id="depart_time" value={this.state.depart_time} onChange={this.handleChange} />
-          <div>Total journey time : </div>
+          <div>Total journey time :<br/><span style={{fontSize:"12px", color:"grey"}}>[Please put 00 for both hours and minutes if you do not want to change them]</span> </div>
           <input type="number" placeholder="Hours" name="journey_time_hh" id="journey_time_hh" value={this.state.journey_time_hh} onChange={this.handleChange} />
           <div />
           <input type="number" placeholder="Minutes" name="journey_time_mm" id="journey_time_mm" value={this.state.journey_time_mm} onChange={this.handleChange} />
