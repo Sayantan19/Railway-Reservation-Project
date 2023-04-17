@@ -17,8 +17,8 @@ Router.post("/trains", trainController.train_list);
 
 Router.post("/train/update", trainController.train_update_post);
 
-Router.get("/train/:id/delete", trainController.train_delete_get);
-Router.post("/train/:id/delete", trainController.train_delete_post);
+// Router.get("/train/delete", trainController.train_delete_get);
+Router.post("/train/delete", trainController.train_delete_post);
 
 Router.get("/train/book", trainController.train_book_get);
 Router.post("/train/book", trainController.train_book_post);
