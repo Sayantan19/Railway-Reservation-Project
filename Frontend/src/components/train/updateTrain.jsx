@@ -81,7 +81,7 @@ class Train extends Component {
           if (!(data.error instanceof Array)) {
             data.error = new Array(data.error);
           }
-          data.error.map(error => (h2.innerHTML ="Error: "+ error.msg + "\n"));
+          data.error.map(error => (h2.innerHTML = "Error: " + error.msg + "\n"));
           setTimeout(function () {
             h2.style.visibility = "hidden";
           }, 5000);
@@ -92,7 +92,7 @@ class Train extends Component {
   render() {
     return (
       <div className="admin-main">
-        <h1>Add Trains Page </h1>
+        <h1>Update Trains Page </h1>
         <form id="form" onSubmit={this.submit}>
           <label htmlFor="name">Name : </label>
           <input type="text" name="name" id="train_name" value={this.state.name} onChange={this.handleChange} />
@@ -125,13 +125,15 @@ class Train extends Component {
           </div>
           <label htmlFor="route">Select Route</label>
           <select name="route" id="route" onChange={this.handleChange}></select>
-          <label htmlFor="depart_time">Departure time: <br/><span style={{fontSize:"12px", color:"grey"}}>[Please put original time if you do not want to change the Departure Time]</span> </label>
+          <label htmlFor="depart_time">Departure time: <br /><span style={{ fontSize: "12px", color: "grey" }}>[Please put original time if you do not want to change the Departure Time]</span> </label>
           <input type="time" name="depart_time" id="depart_time" value={this.state.depart_time} onChange={this.handleChange} />
-          <div>Total journey time :<br/><span style={{fontSize:"12px", color:"grey"}}>[Please put 00 for both hours and minutes if you do not want to change them]</span> </div>
+          <label>Total journey time :
+            <br /><span style={{ fontSize: "12px", color: "grey" }}>[Please put 00 for both hours and minutes if you do not want to change them]</span>
+          </label>
           <input type="number" placeholder="Hours" name="journey_time_hh" id="journey_time_hh" value={this.state.journey_time_hh} onChange={this.handleChange} />
           <div />
           <input type="number" placeholder="Minutes" name="journey_time_mm" id="journey_time_mm" value={this.state.journey_time_mm} onChange={this.handleChange} />
-          <label htmlFor="coach_seats">coach seats : </label>
+          <label htmlFor="coach_seats">Coach Seats : </label>
           <input type="number" name="coach_seats" id="coach_seats" value={this.state.coach_seats} onChange={this.handleChange} />
           <label htmlFor="total_coaches">Total Coaches : </label>
           <input type="number" name="total_coaches" id="total_coaches" value={this.state.total_coaches} onChange={this.handleChange} />
