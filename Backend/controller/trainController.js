@@ -258,8 +258,23 @@ exports.train_delete_get = (req, res) => {
 };
 
 exports.train_delete_post = (req, res) => {
-    res.send("ok");
-};
+    Train.findOne({ "train_no": Number(req.body.train_no) })
+    .then(() => {
+        console.log("Jio kaka")
+        Train.deleteOne({"train_no": req.body.train_no})  
+        .then(()=>{
+            console.log("Successfully deleted!")
+        })
+        .catch(err =>{
+            console.log(err);
+        }) 
+    })
+    .catch(err =>{
+        console.log(err)
+    });
+    console.log(req.body);
+    res.json({msg:"ok "}); 
+}; 
 
 exports.train_book_get = (req, res) => {
     res.send("ok");
