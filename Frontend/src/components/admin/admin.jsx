@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Anav from "./admin_nav";
 import Train from "../train/train";
 import UpdateTrain from '../train/updateTrain'
+import admin_deleteTrain from "../train/delTrain"
 import T_Route from "../route/route";
 import Station from "../station/station";
 import Profile from "../user/Profile_register";
@@ -27,6 +28,7 @@ class Admin extends Component {
 
           <Route path="/admin/train/create" component={Train} />
           <Route path="/admin/train/update" component={UpdateTrain} />
+          <Route path="/admin/train/delTrain" component={admin_deleteTrain}></Route>
 
           {/* train_route routes */}
 
@@ -35,6 +37,7 @@ class Admin extends Component {
           {/* station routes */}
 
           <Route path="/admin/station/create" component={Station} />
+
         </Switch>
       </div>
     );

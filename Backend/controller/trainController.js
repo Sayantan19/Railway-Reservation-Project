@@ -273,7 +273,7 @@ exports.train_delete_post = (req, res) => {
         console.log(err)
     });
     console.log(req.body);
-    res.json({msg:"ok "}); 
+    res.json({msg:"ok"}); 
 }; 
 
 exports.train_book_get = (req, res) => {
