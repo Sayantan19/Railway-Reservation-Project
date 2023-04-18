@@ -1,4 +1,4 @@
-# Railway-Reservation-Project
+# Railway-Reservation
 
 This is the topic for our third year Software Engineering Project. The function description for our project is as follows:
 <ol>
