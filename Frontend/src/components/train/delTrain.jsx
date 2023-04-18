@@ -70,32 +70,3 @@ export default class admin_deleteTrain extends Component {
     );
   }
 }
-
-  render() {
-    return (
-      <div>
-        <div className="mb-3">
-          <div className="container" id="hrm">
-            <form onSubmit={this.handleSubmit}>
-              <label className="form-label my-3">
-                Train Number:
-                <input
-                  type="text"
-                  value={this.state.trainNumber}
-                  onChange={this.handleTrainNumberChange}
-                />
-              </label>
-              <button
-                className="btn btn-primary"
-                type="submit"
-                onClick={this.handleSubmit}
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}

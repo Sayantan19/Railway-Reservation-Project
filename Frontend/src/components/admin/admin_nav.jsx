@@ -84,7 +84,7 @@ class Anav extends Component {
 
         <div id="nav-hide4" style={{ display: "none" }}>
           <ul>
-            <Link>
+            <Link to="/admin/train/delete">
               <li>Delete Train</li>
             </Link>
             <Link>
