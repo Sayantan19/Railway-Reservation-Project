@@ -60,7 +60,7 @@ class Login extends Component {
               count++;
             });
           }
-          window.location.hash = "errors";
+          window.location.reload();
           setTimeout(function () {
             errors.style.display = "none";
           }, 10000);

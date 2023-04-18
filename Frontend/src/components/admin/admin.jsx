@@ -7,6 +7,7 @@ import UpdateTrain from '../train/updateTrain'
 import T_Route from "../route/route";
 import Station from "../station/station";
 import Profile from "../user/Profile_register";
+import admin_deleteTrain from "../train/delTrain";
 
 class Admin extends Component {
   shouldComponentUpdate() {
@@ -27,6 +28,7 @@ class Admin extends Component {
 
           <Route path="/admin/train/create" component={Train} />
           <Route path="/admin/train/update" component={UpdateTrain} />
+          <Route path="/admin/train/delete" component={admin_deleteTrain} />
 
           {/* train_route routes */}
 
