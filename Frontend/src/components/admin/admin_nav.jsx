@@ -41,24 +41,7 @@ class Anav extends Component {
             </Link>
           </ul>
         </div>
-        <p onClick={e => this.navUnhide(e, "nav-hide2")}>
-          <i className="material-icons">search</i> Search{" "}
-          <i className="material-icons">arrow_drop_down</i>
-        </p>
 
-        <div id="nav-hide2" style={{ display: "none" }}>
-          <ul>
-            <Link>
-              <li>Search Train</li>
-            </Link>
-            <Link>
-              <li>Search Route</li>
-            </Link>
-            <Link>
-              <li>Search Station</li>
-            </Link>
-          </ul>
-        </div>
         <p onClick={e => this.navUnhide(e, "nav-hide3")}>
           <i className="material-icons">update</i> Update{" "}
           <i className="material-icons">arrow_drop_down</i>
@@ -68,12 +51,6 @@ class Anav extends Component {
           <ul>
             <Link to="/admin/train/update">
               <li>Update Train</li>
-            </Link>
-            <Link to="#">
-              <li>Update Route</li>
-            </Link>
-            <Link to="#">
-              <li>Update Station</li>
             </Link>
           </ul>
         </div>
@@ -86,12 +63,6 @@ class Anav extends Component {
           <ul>
             <Link to="/admin/train/delete">
               <li>Delete Train</li>
-            </Link>
-            <Link>
-              <li>Delete Route</li>
-            </Link>
-            <Link>
-              <li>Delete Station</li>
             </Link>
           </ul>
         </div>
