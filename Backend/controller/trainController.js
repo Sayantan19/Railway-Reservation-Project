@@ -192,65 +192,106 @@ exports.train_create_post = [
     }
 ];
 
-exports.train_update_post = (req, res) => {
-    // console.log(req.body)
-    const query = { train_no: Number(req.body.train_no) }
-    Train.findOne(query)
-        .then(async (response) => {
-            // console.log(response)
-            if (response != null) {
-                for (var i in req.body) {
-                    if (i == 'depart_time') {
-                        // console.log('hi!')
-                        //finding arrival time from duration given by user
-                        const depart_time = new Date("2000-01-01 " + req.body.depart_time);
-                        const duration = moment.duration({
-                            hours: req.body.journey_time_hh,
-                            minutes: req.body.journey_time_mm
-                        });
-                        const arrival_time = moment(depart_time).add(duration);
-                    }
-                    else if (req.body[i] != '' && response[i] != undefined) {
-                        console.log(i + " : " + typeof (req.body[i]) + ", query: " + typeof (response[i]))
-                        var filter = { [i]: response[i] }
-
-                        var x = typeof (response[i])
-                        if (x == "number") {
-                            x = Number(req.body[i])
-                            console.log(x)
-                            var updateDoc = { [i]: x }
-                            await Train.updateOne(filter, updateDoc)
-                                .then((response) => {
-                                    console.log(response.acknowledged + " Updated")
-                                })
-                                .catch(err => {
-                                    console.log(err)
-                                })
+exports.train_update_post = async (req, res) => {
+    //Checking whether user is an admin or not
+    if (req.user_detail.admin) {
+        //Searching for the train in the database using the Train No.
+        console.log("Received Journey time: " + req.body.journey_time_hh + " : " + req.body.journey_time_mm)
+        const query = { "train_no": Number(req.body.train_no) }
+        await Train.findOne(query)
+            .then(async (response) => {
+                //DB accessed without errors
+                if (response != null) {
+                    //Train exists
+                    for (var i in req.body) {
+                        if (i == 'depart_time') {
+                            // finding arrival time from duration given by user
+                            const depart_time = new Date("2000-01-01 " + req.body.depart_time);
+                            if (req.body.journey_time_hh != undefined && req.body.journey_time_mm != undefined) {
+                                const duration = moment.duration({
+                                    hours: req.body.journey_time_hh,
+                                    minutes: req.body.journey_time_mm
+                                });
+                                const arrival_time = moment(depart_time).add(duration);
+                                var updateDoc = {
+                                    $set: {
+                                        'depart_time': depart_time,
+                                        'arrival_time': arrival_time
+                                    }
+                                }
+                                await Train.updateOne(query, updateDoc)
+                                    .then(() => {
+                                        console.log("Updated")
+                                    })
+                                    .catch(err => {
+                                        console.log(err + ": Cannot update the database")
+                                    })
+                                console.log("Departure Time: " + depart_time + "\nArrival Time: " + arrival_time);
+                            }
+                            else {
+                                console.log("Departure Time and Arrival Time remain unchanged");
+                                continue;
+                            }
                         }
-                        else {
-                            x = req.body[i]
-                            var updateDoc = { [i]: x }
-                            await Train.updateOne(filter, updateDoc)
-                                .then((response) => {
-                                    console.log(response.acknowledged + " Updated")
-                                })
-                                .catch(err => {
-                                    console.log(err)
-                                })
+                        else if (req.body[i] != '' && response[i] != undefined) {
+                            var x = typeof (response[i])
+                            //Checks whether x is a number or not
+                            if (x == "number") {
+                                x = Number(req.body[i])
+                                console.log("New Value: " + x + " Default value: " + response[i])
+                                console.log(x)
+                                var updateDoc = { $set: { [i]: x } }
+                                await Train.updateOne(query, updateDoc)
+                                    .then((response) => {
+                                        console.log("Updated")
+                                    })
+                                    .catch(err => {
+                                        console.log(err + ": Cannot update the database.")
+                                    })
+                            }
+                            else {
+                                x = req.body[i]
+                                console.log("New Value: " + x + " Default value: " + response[i])
+                                var updateDoc = { $set: { [i]: x } }
+                                await Train.updateOne(query, updateDoc)
+                                    .then((response) => {
+                                        console.log(response.acknowledged + " Updated")
+                                    })
+                                    .catch(err => {
+                                        console.log(err)
+                                    })
+                            }
                         }
                     }
                 }
-            }
-            else
-                res.json({
-                    saved: "unsuccessful",
-                    error: { msg: "Train Not Present in Database..." }
-                });
+                //Train number not in the database
+                else
+                    res.json({
+                        saved: "unsuccessful",
+                        error: { msg: "Train Not Present in Database..." }
+                    });
+            })
+            //Connection error
+            .catch(err => {
+                console.log('Error');
+                res.json(
+                    {
+                        saved: "unsuccessful",
+                        error: { msg: "Error in connection" }
+                    });
+            })
+        res.json({
+            saved: "success"
         })
-        .catch(err => {
-            console.log('Error');
-            res.send("Not ok");
-        })
+    }
+    //Not an admin
+    else {
+        res.json({
+            saved: "unsuccessful",
+            error: { msg: "You are not an admin" }
+        });
+        return;
+    }
 };
 
 exports.train_delete_get = (req, res) => {
@@ -258,23 +299,32 @@ exports.train_delete_get = (req, res) => {
 };
 
 exports.train_delete_post = (req, res) => {
-    Train.findOne({ "train_no": Number(req.body.train_no) })
-    .then(() => {
-        console.log("Jio kaka")
-        Train.deleteOne({"train_no": req.body.train_no})  
-        .then(()=>{
-            console.log("Successfully deleted!")
-        })
-        .catch(err =>{
-            console.log(err);
-        }) 
-    })
-    .catch(err =>{
-        console.log(err)
-    });
-    console.log(req.body);
-    res.json({msg:"ok"}); 
-}; 
+    if (req.user_detail.admin) {
+        Train.findOne({ "train_no": Number(req.body.train_no) })
+            .then(() => {
+                console.log("Jio kaka")
+                Train.deleteOne({ "train_no": req.body.train_no })
+                    .then(() => {
+                        console.log("Successfully deleted!")
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            });
+        console.log(req.body);
+        res.json({ msg: "ok" });
+    }
+    else {
+        res.json({
+            saved: "unsuccessful",
+            error: { msg: "You are not an admin" }
+        });
+        return;
+    }
+};
 
 exports.train_book_get = (req, res) => {
     res.send("ok");

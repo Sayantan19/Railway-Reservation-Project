@@ -28,7 +28,7 @@ class Admin extends Component {
 
           <Route path="/admin/train/create" component={Train} />
           <Route path="/admin/train/update" component={UpdateTrain} />
-          <Route path="/admin/train/delTrain" component={admin_deleteTrain}></Route>
+          <Route path="/admin/train/delete" component={admin_deleteTrain} />
 
           {/* train_route routes */}
 

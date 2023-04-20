@@ -15,10 +15,9 @@ Router.post("/train/create", auth, trainController.train_create_post);
 Router.get("/train/:id", trainController.train_detail);
 Router.post("/trains", trainController.train_list);
 
-Router.post("/train/update", trainController.train_update_post);
+Router.post("/train/update",auth, trainController.train_update_post);
 
-// Router.get("/train/delete", trainController.train_delete_get);
-Router.post("/train/delete", trainController.train_delete_post);
+Router.post("/train/delete",auth,  trainController.train_delete_post);
 
 Router.get("/train/book", trainController.train_book_get);
 Router.post("/train/book", trainController.train_book_post);

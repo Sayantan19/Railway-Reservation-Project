@@ -127,8 +127,7 @@ class Train extends Component {
           <select name="route" id="route" onChange={this.handleChange}></select>
           <label htmlFor="depart_time">Departure time: <br /><span style={{ fontSize: "12px", color: "grey" }}>[Please put original time if you do not want to change the Departure Time]</span> </label>
           <input type="time" name="depart_time" id="depart_time" value={this.state.depart_time} onChange={this.handleChange} />
-          <label>Total journey time :
-            <br /><span style={{ fontSize: "12px", color: "grey" }}>[Please put 00 for both hours and minutes if you do not want to change them]</span>
+          <label>Total Journey Time :
           </label>
           <input type="number" placeholder="Hours" name="journey_time_hh" id="journey_time_hh" value={this.state.journey_time_hh} onChange={this.handleChange} />
           <div />
