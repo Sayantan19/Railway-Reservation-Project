@@ -4,7 +4,7 @@ import rail_icon from "../images/rail_icon.png";
 
 import Clock from "react-live-clock";
 class Navbar extends Component {
-  logout = (e) => {
+  logout = () => {
     this.props.handleToken(null);
     localStorage.removeItem("token");
   };
@@ -61,7 +61,7 @@ class Navbar extends Component {
               {this.date.toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "long",
-                year: "numeric"
+                year: "numeric",
               })}
               {" ["}
               <Clock format={"HH:mm:ss"} />

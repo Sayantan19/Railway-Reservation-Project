@@ -6,6 +6,7 @@ import Unav from "./u_nav";
 import Bookedtickets from "./booked_tickets";
 import Transactions from "./transactions";
 import Changepass from "./change_password";
+import Payment from "./payment";
 
 class User extends Component {
   shouldComponentUpdate() {
@@ -27,6 +28,8 @@ class User extends Component {
           <Route path="/user/txns" component={Transactions} />
 
           <Route path="/user/cpass" component={Changepass} />
+
+          <Route path="/user/payment" component={Payment}/>
         </Switch>
       </div>
     );
