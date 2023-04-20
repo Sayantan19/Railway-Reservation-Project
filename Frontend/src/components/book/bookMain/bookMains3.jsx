@@ -49,7 +49,7 @@ class Bookmains3 extends Component {
             })
               .then((res) => res.json())
               .then((data) =>
-                fetch("/booking/ticket/search/", {
+                fetch("/booking/ticket/search", {
                   method: "post",
                   body: JSON.stringify({ pnr: data.id }),
                   headers: { "content-type": "application/json" },

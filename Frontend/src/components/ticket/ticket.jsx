@@ -128,6 +128,7 @@ class Ticket extends Component {
         <div> {data.cost.$numberDecimal}</div>
         <div>Payment Id</div>
         <div>:</div>
+        <div> {data.paymentId}</div>
         <div>
           {" "}
           {this.state.paymentObject.refund_status === "full"

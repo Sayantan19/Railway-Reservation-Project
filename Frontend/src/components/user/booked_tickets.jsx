@@ -29,7 +29,7 @@ class Bookedtickets extends Component {
     e.preventDefault();
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "block";
-    fetch("/booking/ticket/search/", {
+    fetch("/booking/ticket/search", {
       method: "POST",
       body: JSON.stringify({ pnr: e.target.innerHTML }),
       headers: {

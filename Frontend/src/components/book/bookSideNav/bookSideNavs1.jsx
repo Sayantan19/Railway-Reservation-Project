@@ -5,7 +5,7 @@ class Booksidenavs1 extends Component {
       <React.Fragment>
         <div id="ticket">
           <div>
-            <div>BookYourJourney.com</div>
+            <div>IndoRailway.com</div>
             <p style={{ fontWeight: "bold" }}>
               {this.props.train_name} ({this.props.train_no})
             </p>

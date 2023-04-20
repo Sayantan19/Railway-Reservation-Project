@@ -53,7 +53,7 @@ Router.post("/station/:id/delete", stationController.station_delete_post);
 
 Router.post("/ticket/", ticketController.create_ticket);
 
-Router.post("/ticket/search/", ticketController.ticket_search);
+Router.post("/ticket/search", ticketController.ticket_search);
 Router.post("/ticket/cancel", ticketController.ticket_cancel);
 
 //other routes

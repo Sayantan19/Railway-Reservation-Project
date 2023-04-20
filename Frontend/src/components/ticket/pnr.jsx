@@ -5,7 +5,7 @@ class PNR extends Component {
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "block";
     const form = document.getElementById("find-ticket");
-    fetch("/booking/ticket/search/", {
+    fetch("/booking/ticket/search", {
       method: "POST",
       body: JSON.stringify({ pnr: form[0].value }),
       headers: {
