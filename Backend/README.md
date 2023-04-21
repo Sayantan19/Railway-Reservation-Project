@@ -1,4 +1,4 @@
-# BookYourJourney.com
+# IndoRailway.com
 
 This app is made for private railway companies to add their trains in database and made the website available to users for booking.
 
@@ -18,7 +18,7 @@ This app is made for private railway companies to add their trains in database a
 3. JSON Web Tokens
 4. Razorpay payment links API
 
-Client repo : https://github.com/sanjaymajhi/railway_reservation_system_client
+Client repo : 21,34: Client repo : https://github.com/Sayantan19/Railway-Reservation-Project
 
 ## Env File : 
 create .env file in the root directory and put this :
@@ -35,5 +35,5 @@ MONGODB_URI=<generate from mongodb atlas website>
 
 # Project Deployed in Heroku PaaS
 
-Website : https://bookyourjourney.herokuapp.com
+Website : https://IndoRailway.herokuapp.com
 

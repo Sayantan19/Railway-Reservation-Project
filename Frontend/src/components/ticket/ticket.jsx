@@ -23,7 +23,7 @@ class Ticket extends Component {
     })
       .then((res) => res.json())
       .then(async (data) => {
-        console.log(data);
+        // console.log(data);
         await this.setState({ paymentObject: data });
         const overlay = document.querySelector(".overlay");
         overlay.style.display = "none";
@@ -52,8 +52,8 @@ class Ticket extends Component {
         if (data.cancelled === "success") {
           fetch(
             "/extapi/payments/" +
-              this.props.location.state.data.paymentId +
-              "/refund",
+            this.props.location.state.data.paymentId +
+            "/refund",
             {
               method: "POST",
               body: JSON.stringify({}),
@@ -66,6 +66,7 @@ class Ticket extends Component {
           )
             .then((res) => res.json())
             .then((data) => {
+              console.log(data)
               document.getElementById("cancel-confirm").innerHTML = "";
               const div = document.getElementById("ticket-page");
               const h2 = document.createElement("h2");
@@ -129,7 +130,6 @@ class Ticket extends Component {
         <div>Payment Id</div>
         <div>:</div>
         <div>
-          {" "}
           {this.state.paymentObject.refund_status === "full"
             ? "Refunded"
             : this.state.paymentObject.id}
@@ -169,14 +169,30 @@ class Ticket extends Component {
         </div>
         <div></div>
         {this.state.paymentObject.refund_status !== null ? (
-          ""
+          <a href='/'>
+            <button id="home">
+              Back to home
+            </button>
+          </a>
         ) : new Date(data.arrival_date) < new Date() ? (
-          ""
+          <a href='/'>
+            <button id="home">
+              Back to home
+            </button>
+          </a>
         ) : (
-          <button id="cancel" onClick={this.cancelHandler}>
-            Cancel ticket
-          </button>
-        )}
+          <>
+            <button id="cancel" onClick={this.cancelHandler}>
+              Cancel ticket
+            </button>
+            <a href='/'>
+              <button id="home">
+                Back to home
+              </button>
+            </a>
+          </>
+        )
+        }
 
         <div></div>
         <div id="cancel-confirm">
@@ -195,7 +211,7 @@ class Ticket extends Component {
             Please Wait...
           </p>
         </div>
-      </div>
+      </div >
     );
   }
 }

@@ -29,7 +29,7 @@ class Bookedtickets extends Component {
     e.preventDefault();
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "block";
-    fetch("/booking/ticket/search/", {
+    fetch("/booking/ticket/search", {
       method: "POST",
       body: JSON.stringify({ pnr: e.target.innerHTML }),
       headers: {
@@ -69,7 +69,7 @@ class Bookedtickets extends Component {
 
                 <td onClick={this.loadTicketDetails}>
                   {" "}
-                  <Link>{ticket._id}</Link>
+                  <a style={{color: 'blue', cursor:'pointer'}}>{ticket._id}</a>
                 </td>
 
                 <td>

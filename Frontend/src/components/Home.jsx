@@ -13,30 +13,7 @@ class Home extends Component {
     };
 
     this.loadStations();
-    Swal.fire({
-      title: "Welcome to IndoRailway.com",
-      icon: "info",
-      showCloseButton: true,
-      html: `
-      <p>
-        Dear user, as of now we have few number of trains running on different
-        routes on different days of the week.
-      </p>
-      <p>You can try out with these details or choose your own:</p>
-      <ul style="display:grid;grid-template-columns:40% 60%;">
-          <li style="text-align:left;">From</li>
-          <li style="text-align:left;">: New Delhi</li>
-          <li style="text-align:left;">To</li>
-          <li style="text-align:left;">: Howrah</li>
-          <li style="text-align:left;">Class</li>
-          <li style="text-align:left;">: All classes</li>
-          <li style="text-align:left;">Departs on</li>
-          <li style="text-align:left;">: mon, tue, thu, fri, sun</li>
-        </ul>
-      <p><strong>Sorry for inconvenience</strong></p>
-      <p><b>Note :</b> Please register with original mobile or email otherwise demo payment link will not be received.</p>`,
-      showConfirmButton: false,
-    });
+
   }
 
   loadStations = () => {
@@ -110,7 +87,7 @@ class Home extends Component {
     return (
       <div className="main">
         <div id="train-search-form">
-          <div>Train Ticket Booking</div>
+          <h1>Train Ticket Booking</h1>
           <form onSubmit={this.submit}>
             <div>
               <select
