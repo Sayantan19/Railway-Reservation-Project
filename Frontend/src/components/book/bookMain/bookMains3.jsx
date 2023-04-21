@@ -77,10 +77,6 @@ class Bookmains3 extends Component {
         <strong>Please Complete your payment within 5 minutes...</strong>
         <p>Payment link has been sent to your mobile phone and email.</p>
         <p>
-          Note : For demo payment select netbanking in payment page and then
-          select any bank and proceed, no bank details will be asked
-        </p>
-        <p>
           After you have completed your payment, your seats will be confirmed
           and ticket will be available for download.
         </p>

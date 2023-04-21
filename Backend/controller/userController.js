@@ -8,6 +8,7 @@ var jwt = require("jsonwebtoken");
 var Request = require("request-promise");
 
 exports.profile = (req, res) => {
+  console.log(req.body)
   User.findById(req.user_detail.id).exec((err, details) => {
     if (details) {
       res.status(200).json(details);

@@ -1,5 +1,17 @@
 var Request = require("request-promise");
 const ticket = require('../models/ticket')
+
+function idGenerator(type) {
+    let result = ''
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < 14; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    result = type+result;
+    return result;
+}
+
 exports.paymentFetch = async (req, res) => {
     // var options = {
     //     uri: "https://api.razorpay.com/v1/payments/" + req.params.id,
@@ -14,7 +26,7 @@ exports.paymentFetch = async (req, res) => {
     await ticket.findOne({ "paymentId": req.params.id })
         .then(data => {
             console.log(Number(data.cost))
-            const amt = Number(data.cost)*100;
+            const amt = Number(data.cost) * 100;
             payment = {
                 "id": req.params.id,
                 "entity": "payment",
@@ -56,25 +68,66 @@ exports.paymentFetch = async (req, res) => {
                 "acquirer_data": {
                     "auth_code": "299196"
                 },
-                "created_at":  Date.parse(data.bookedOn) / 1000
+                "created_at": Date.parse(data.bookedOn) / 1000
             }
             res.json(payment)
         })
-    result = null
+        .catch(err => {
+            res.json({ error: err })
+        })
 };
 
-exports.paymentRefund = (req, res) => {
-    var options = {
-        method: "POST",
-        uri: "https://api.razorpay.com/v1/payments/" + req.params.id + "/refund",
-        headers: {
-            authorization:
-                "Basic cnpwX3Rlc3Rfa0hiVWVmN1diTVJJQ3M6dUF1UHRRRExBbXN3aEZHb0NDYklCdWZz",
-        },
-        json: true,
-    };
-    Request(options).then((data) => res.json({ ...data }));
-};
+exports.paymentRefund = async (req, res) => {
+    // var options = {
+    //     method: "POST",
+    //     uri: "https://api.razorpay.com/v1/payments/" + req.params.id + "/refund",
+    //     headers: {
+    //         authorization:
+    //             "Basic cnpwX3Rlc3Rfa0hiVWVmN1diTVJJQ3M6dUF1UHRRRExBbXN3aEZHb0NDYklCdWZz",
+    //     },
+    //     json: true,
+    // };
+    // Request(options).then((data) => res.json({ ...data }));
+    await ticket.findOne({ "paymentId": req.params.id })
+        .then(data => {
+            const refund_id = idGenerator('rfnd_');
+            console.log(Number(data.cost))
+            const amt = Number(data.cost) * 100;
+            refund = {
+                "id": refund_id,
+                "entity": "refund",
+                "amount": amt,
+                "receipt": "",
+                "currency": "INR",
+                "payment_id": data.paymentId,
+                "notes": [],
+                "receipt": null,
+                "acquirer_data": {
+                    "arn": null
+                },
+                "created_at": Math.floor(Date.now() / 1000),
+                "batch_id": null,
+                "status": "processed",
+                "speed_processed": "normal",
+                "speed_requested": "normal"
+            }
+            res.json(refund);
+        })
+        .catch(err => {
+            const error = {
+                "error": {
+                    "code": "BAD_REQUEST_ERROR",
+                    "description": err,
+                    "source": "business",
+                    "step": "payment_initiation",
+                    "reason": "input_validation_failed",
+                    "metadata": {},
+                    "field": "amount"
+                }
+            }
+            res.json(error)
+        })
+}
 
 exports.refundFetch = (req, res) => {
     var options = {
@@ -108,12 +161,7 @@ exports.ticketStatus = (req, res) => {
 
 exports.ticket_book_get = (req, res) => {
     // console.log(req.body)
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < 10; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
+    let payment_id = idGenerator('pay_')
     // var options = {
     //     uri: "https://api.razorpay.com/v1/invoices/" + req.params.id,
     //     headers: {
@@ -123,24 +171,16 @@ exports.ticket_book_get = (req, res) => {
     //     json: true,
     // };
     // Request(options).then((data) => res.json({ ...data }));
-    result = 'bosepay' + result;
     res.json({
         msg: 'success',
-        payment_id: result,
+        payment_id: payment_id,
         invoice_id: req.params.id
     })
 };
 exports.ticket_book_post = (req, res) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < 14; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    result = 'inv_' + result
-    console.log(result);
+    let invoice_id = idGenerator('inv_')
     res.json({
         msg: 'success',
-        id: result
+        id: invoice_id
     })
 } 

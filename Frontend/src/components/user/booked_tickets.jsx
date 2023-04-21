@@ -69,7 +69,7 @@ class Bookedtickets extends Component {
 
                 <td onClick={this.loadTicketDetails}>
                   {" "}
-                  <Link>{ticket._id}</Link>
+                  <a style={{color: 'blue', cursor:'pointer'}}>{ticket._id}</a>
                 </td>
 
                 <td>
