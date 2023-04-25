@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import rail_icon from "../images/rail_icon.png";
+import rail_icon from "../images/logo-no-background.png";
 
 import Clock from "react-live-clock";
 class Navbar extends Component {
-  logout = (e) => {
+  logout = () => {
     this.props.handleToken(null);
     localStorage.removeItem("token");
   };
@@ -16,7 +16,7 @@ class Navbar extends Component {
           <Link className="nav-left" to="/">
             <p>
               <span>
-                <img src={rail_icon} alt="logo" />
+                <img src={rail_icon} alt="logo" id="logo" />
               </span>
               {"  "}
               IndoRailway.com
@@ -61,7 +61,7 @@ class Navbar extends Component {
               {this.date.toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "long",
-                year: "numeric"
+                year: "numeric",
               })}
               {" ["}
               <Clock format={"HH:mm:ss"} />

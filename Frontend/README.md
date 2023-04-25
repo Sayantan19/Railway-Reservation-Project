@@ -1,4 +1,4 @@
-# BookYourJourney.com
+# IndoRailway.com
 
 This app is made for private railway companies to add their trains in database and made the website available to users for booking.
 
@@ -16,7 +16,7 @@ This app is made for private railway companies to add their trains in database a
 1. ReactJS
 2. SCSS
 
-API repo : https://github.com/sanjaymajhi/railway_reservation_system_api
+API repo : https://github.com/Sayantan19/Railway-Reservation-Project
 
 ## How to use : 
 1. clone this repo
@@ -27,5 +27,5 @@ API repo : https://github.com/sanjaymajhi/railway_reservation_system_api
 
 # Project Deployed in Heroku PaaS
 
-Website : https://bookyourjourney.herokuapp.com
+Website : https://IndoRailway.herokuapp.com
 

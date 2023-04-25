@@ -9,6 +9,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var bookingRouter = require("./routes/booking");
 var extapi = require("./routes/extapi");
+var admin = require("./routes/admin");
 const port = process.env.PORT || 8000; 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use("/", indexRouter);
 app.use("/user", usersRouter);
 app.use("/booking", bookingRouter);
 app.use("/extapi", extapi);
+app.use("/admin",admin)
 
 app.use(express.static(path.join(__dirname, "build")));
 app.get("/*", (req, res) => {

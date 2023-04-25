@@ -33,6 +33,7 @@ class Bookmains2 extends Component {
     })
       .then((res) => res.json())
       .then((details) => {
+        console.log(details.id)
         this.props.paymentHandler(details.id);
       });
     this.props.stageHandler(this.props.stage + 1);
@@ -46,7 +47,7 @@ class Bookmains2 extends Component {
         <div id="review">
           <strong>
             <p id="review-train-name">
-              {data.train_name} ({data.train_no}) | Teir : {data.teir} | GENERAL
+              {data.train_name} ({data.train_no}) | Tier : {data.teir} | GENERAL
               |{" " + data.count} Travellers
             </p>
           </strong>

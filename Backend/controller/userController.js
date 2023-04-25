@@ -1,19 +1,14 @@
-var async = require("async");
-var mongoose = require("mongoose");
-
 var User = require("../models/user");
 
 var validator = require("express-validator");
 
 var bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
-var nodemailer = require("nodemailer");
-
-var BodyParser = require("body-parser");
 //for recaptcha
 var Request = require("request-promise");
 
 exports.profile = (req, res) => {
+  console.log(req.body)
   User.findById(req.user_detail.id).exec((err, details) => {
     if (details) {
       res.status(200).json(details);
@@ -262,8 +257,8 @@ exports.user_login_post = [
               };
               await jwt.sign(
                 payload,
-                "sanjay",
-                { expiresIn: 10000 },
+                "bose",
+                { expiresIn: 3600 },
                 (err, token) => {
                   if (err) {
                     throw err;

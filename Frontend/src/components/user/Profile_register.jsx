@@ -32,6 +32,7 @@ class Profile extends Component {
   getProfile() {
     const token = localStorage.getItem("token");
     const url = "/user/profile/";
+    console.log(token)
     let data = {
       token: token
     };
