@@ -16,7 +16,7 @@ This app is made for private railway companies to add their trains in database a
 1. ReactJS
 2. SCSS
 
-API repo : https://github.com/Sayantan19/Railway-Reservation-Project
+API repo : https://github.com/Sayantan19/Railway-Reservation-Project/Backend
 
 ## How to use : 
 1. clone this repo
@@ -24,8 +24,3 @@ API repo : https://github.com/Sayantan19/Railway-Reservation-Project
 3. Make .env files in backend root directory
 4. do npm install in both directories
 5. Now in bash, type npm run start-both (in backend folder bash)
-
-# Project Deployed in Heroku PaaS
-
-Website : https://IndoRailway.herokuapp.com
-
