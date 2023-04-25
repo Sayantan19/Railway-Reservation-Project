@@ -33,7 +33,4 @@ MONGODB_URI=<generate from mongodb atlas website>
 4. do npm install in both directories
 5. Now in bash, type npm run start-both (in backend folder bash)
 
-# Project Deployed in Heroku PaaS
-
-Website : https://IndoRailway.herokuapp.com
 
