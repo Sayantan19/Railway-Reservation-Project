@@ -18,7 +18,7 @@ This app is made for private railway companies to add their trains in database a
 3. JSON Web Tokens
 4. Razorpay payment links API
 
-Client repo : 21,34: Client repo : https://github.com/Sayantan19/Railway-Reservation-Project
+Client repo : https://github.com/Sayantan19/Railway-Reservation-Project/tree/master/Frontend
 
 ## Env File : 
 create .env file in the root directory and put this :
