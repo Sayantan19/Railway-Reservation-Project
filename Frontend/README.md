@@ -16,7 +16,7 @@ This app is made for private railway companies to add their trains in database a
 1. ReactJS
 2. SCSS
 
-API repo : https://github.com/Sayantan19/Railway-Reservation-Project/Backend
+API repo : https://github.com/Sayantan19/Railway-Reservation-Project/tree/master/Backend
 
 ## How to use : 
 1. clone this repo
