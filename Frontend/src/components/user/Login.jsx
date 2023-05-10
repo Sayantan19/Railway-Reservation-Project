@@ -102,7 +102,7 @@ class Login extends Component {
 
           <div
             className="g-recaptcha"
-            data-sitekey="6LdD4-UUAAAAAHeM_PXNeDk5X0IBFDrbl2S6sLwu"
+            data-sitekey="6LcwfVEkAAAAAFk6UgrfgTWSgHB0rqGuLgc71_Ee"
           />
           <div />
           <input type="submit" value="Login" />
